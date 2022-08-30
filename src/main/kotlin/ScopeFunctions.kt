@@ -8,7 +8,9 @@ class ScopeFunctions {
     private var myInt: Int? = null
 
     fun scopeFunctions() {
-        if (myInt != null) { val num = myInt!! + 1 }
+        if (myInt != null) {
+            val num = myInt!! + 1
+        }
 
         myInt?.let { val num = it + 1 }
 
@@ -29,6 +31,53 @@ class ScopeFunctions {
                     println(it.name)
                 }
             }
+
+        /** Apply */
+        val myArrayList = arrayListOf<Int>()
+        myArrayList.add(1)
+        myArrayList.add(2)
+        myArrayList.add(3)
+        myArrayList.clone()
+        myArrayList.clear()
+
+        arrayListOf<Int>().apply {
+            add(1)
+            add(2)
+            add(3)
+            clone()
+            clear()
+        }
+
+        /** With */
+
+        /** Bu örnekte konsol'a Marley yazılır. */
+        Person("marley", 4)
+            .apply {
+                name = "Marley"
+            }.also {
+                println(it.name)
+            }
+
+        val newMarley = Person("mar", 4)
+            .apply {
+                name = "Marley"
+            }
+        println(newMarley.name)
+
+        val anotherMarley = with(Person("arley", 4)) {
+            name = "Marley"
+        }
+        /** Unit */
+        println(anotherMarley)
+
+        val withMarley = Person("arley", 4)
+
+        with(withMarley) {
+            name = "Marley"
+            age = 4
+        }
+
+        println(withMarley.name)
     }
 }
 
